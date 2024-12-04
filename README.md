@@ -1,6 +1,6 @@
 # Project Name
 
-Laravel Multi Authentication
+Rello
 
 ## Introduction
 
