@@ -5,13 +5,14 @@ namespace App\Http\Controllers;
 use App\Models\Rent;
 use Illuminate\Http\Request;
 use DataTables;
+use Illuminate\Support\Facades\Auth;
 
 class RentController extends Controller
 {
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $data = Rent::all();
+            $data = Rent::where('user_id', Auth::id())->get();
 
             return DataTables::of($data)
                 ->addIndexColumn()
@@ -47,34 +48,30 @@ class RentController extends Controller
             'bedrooms' => 'required|integer',
             'bathrooms' => 'required|integer',
             'size' => 'required|integer',
-            // 'agent_name' => 'required',
             'agent_phone' => 'required',
             'description' => 'required',
             'agent_image' => 'image|nullable',
-            'background_image' => 'image|nullable',
         ]);
 
-        $data = $request->all();
+        $rent = new Rent($request->all());
+        $rent->user_id = Auth::id();
 
         if ($request->hasFile('agent_image')) {
-            $data['agent_image'] = $request->file('agent_image')->store('uploads', 'public');
+            $rent->agent_image = $request->file('agent_image')->store('agent_images', 'public');
         }
 
-        if ($request->hasFile('background_image')) {
-            $data['background_image'] = $request->file('background_image')->store('uploads', 'public');
-        }
-
-        Rent::create($data);
+        $rent->save();
 
         return redirect()->route('rents.index')->with('success', 'Rent created successfully.');
     }
 
-    public function edit(Rent $rent)
+    public function edit($id)
     {
+        $rent = Rent::where('user_id', Auth::id())->findOrFail($id);
         return view('rents.edit', compact('rent'));
     }
 
-    public function update(Request $request, Rent $rent)
+    public function update(Request $request, $id)
     {
         $request->validate([
             'title' => 'required',
@@ -83,30 +80,26 @@ class RentController extends Controller
             'bedrooms' => 'required|integer',
             'bathrooms' => 'required|integer',
             'size' => 'required|integer',
-            // 'agent_name' => 'required',
             'agent_phone' => 'required',
             'description' => 'required',
             'agent_image' => 'image|nullable',
-            'background_image' => 'image|nullable',
         ]);
 
-        $data = $request->all();
+        $rent = Rent::where('user_id', Auth::id())->findOrFail($id);
+        $rent->fill($request->all());
 
         if ($request->hasFile('agent_image')) {
-            $data['agent_image'] = $request->file('agent_image')->store('uploads', 'public');
+            $rent->agent_image = $request->file('agent_image')->store('agent_images', 'public');
         }
 
-        if ($request->hasFile('background_image')) {
-            $data['background_image'] = $request->file('background_image')->store('uploads', 'public');
-        }
-
-        $rent->update($data);
+        $rent->save();
 
         return redirect()->route('rents.index')->with('success', 'Rent updated successfully.');
     }
 
-    public function destroy(Rent $rent)
+    public function destroy($id)
     {
+        $rent = Rent::where('user_id', Auth::id())->findOrFail($id);
         $rent->delete();
 
         return redirect()->route('rents.index')->with('success', 'Rent deleted successfully.');

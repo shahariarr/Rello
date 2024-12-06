@@ -33,5 +33,6 @@ class Rent extends Model
         'agent_image',
         'background_image',
         'description',
+        'user_id',
     ];
 }

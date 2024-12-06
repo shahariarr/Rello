@@ -73,9 +73,10 @@ Route::group(['namespace' => 'App\Http\Controllers', 'middleware' => ['auth', 'p
  Route::get('/service/edit', [ServiceController::class, 'edit'])->name('service.edit');
  Route::put('/service/update', [ServiceController::class, 'update'])->name('service.update');
 
+// Property Sales
  Route::resource('properties', PropertyController::class);
 
-
+// Property Rent
  Route::resource('rents', RentController::class);
 
 
@@ -87,4 +88,6 @@ Route::group(['namespace' => 'App\Http\Controllers', 'middleware' => ['auth', 'p
 
 
 
-Route::view('/index', 'frontend.partials.main')->name('index');
+Route::view('/index', 'frontend.partials.main')->name('index.main');
+
+Route::get('/index', [Con\FrontendController::class, 'index'])->name('index.main');

@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration {
     public function up()
     {
-        Schema::create('properties', function (Blueprint $table) {
+        Schema::create('rents', function (Blueprint $table) {
             $table->id();
             $table->string('title');
             $table->string('price');
@@ -20,12 +20,13 @@ return new class extends Migration {
             $table->string('agent_image')->nullable();
             $table->string('background_image')->nullable(); // New field for background image
             $table->text('description');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
 
     public function down()
     {
-        Schema::dropIfExists('properties');
+        Schema::dropIfExists('rents');
     }
 };

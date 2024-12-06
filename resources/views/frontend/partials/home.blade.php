@@ -1,21 +1,19 @@
 
     <!-- Start Banner Area -->
+
     <div class="banner-area bg-2">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-lg-7">
-                    <div class="banner-content style-two">
-                        <span class="top-title wow animate__animated animate__fadeInUp delay-0-2s">Start Your Journey</span>
-                        <h1 class="wow animate__animated animate__fadeInUp delay-0-4s">Easy Way to Find Your Property</h1>
-                        <p class="wow animate__animated animate__fadeInUp delay-0-6s">We are a great agency for buying and
-                            selling your property with confidence. So you can easily buy and sell through our company</p>
+                @foreach($banners as $banner)
+                    <div class="col-lg-7">
+                        <div class="banner-content style-two">
+                            <span class="top-title wow animate__animated animate__fadeInUp delay-0-2s">{{ $banner->top_title }}</span>
+                            <h1 class="wow animate__animated animate__fadeInUp delay-0-4s">{{ $banner->headline }}</h1>
+                            <p class="wow animate__animated animate__fadeInUp delay-0-6s">{{ $banner->description }}</p>
+                        </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-                    {{-- <div class="col-lg-5">
+                @endforeach
+                <div class="col-lg-5">
                     <div class="banner-rent-sale-form style-two wow animate__animated animate__fadeInUp delay-0-6s">
                         <form class="rent-sale-form wow animate__animated animate__fadeInUp delay-0-8s">
                             <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
@@ -95,7 +93,12 @@
                             </div>
                         </form>
                     </div>
-                </div> --}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 
 
 

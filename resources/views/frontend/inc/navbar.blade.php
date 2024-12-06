@@ -4,7 +4,7 @@
         <div class="container">
             <div class="mobile-responsive-menu">
                 <div class="logo">
-                    <a href="index.html">
+                    <a href="{{ route('index.main')}}">
                         <img src="{{ asset('frontend/assets/images/logo.png') }}" class="main-logo" alt="logo">
                         <img src="{{ asset('frontend/assets/images/white-logo.png') }}" class="white-logo" alt="logo">
                     </a>
@@ -16,7 +16,7 @@
     <div class="desktop-nav">
         <div class="container-fluid">
             <nav class="navbar navbar-expand-md navbar-light">
-                <a class="navbar-brand" href="index.html">
+                <a class="navbar-brand" href="{{ route('index.main')}}">
                     <img src="{{ asset('frontend/assets/images/logo.png') }}" class="main-logo" alt="logo">
                     <img src="{{ asset('frontend/assets/images/white-logo.png') }}" class="white-logo" alt="logo">
                 </a>
@@ -33,19 +33,19 @@
 
                     <ul class="navbar-nav m-auto">
                         <li class="nav-item">
-                            <a href="#" class="nav-link active">Home</a>
+                            <a href="{{ route('index.main')}}" class="nav-link active">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a href="about-us.html" class="nav-link">About Us</a>
+                            <a href="{{ route('index.main')}}" class="nav-link">About Us</a>
                         </li>
                         <li class="nav-item">
-                            <a href="listing.html" class="nav-link">For Rent</a>
+                            <a href="{{ route('index.main')}}" class="nav-link">For Rent</a>
                         </li>
                         <li class="nav-item">
-                            <a href="listing.html" class="nav-link">For Sale</a>
+                            <a href="{{ route('index.main')}}" class="nav-link">For Sale</a>
                         </li>
                         <li class="nav-item">
-                            <a href="contact-us.html" class="nav-link">Contact</a>
+                            <a href="{{ route('index.main')}}" class="nav-link">Contact</a>
                         </li>
                     </ul>
 
@@ -53,13 +53,13 @@
                         <ul>
 
                             <li>
-                                <a href="my-account.html" class="login">
+                                <a href="{{ route('index.main')}}" class="login">
                                     <i class="ri-user-line"></i>
                                     <span>Log In or Sign Up</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="add-listing.html" class="default-btn btn-radius">
+                                <a href="{{ route('index.main')}}" class="default-btn btn-radius">
                                     Add Listing
                                 </a>
                             </li>
