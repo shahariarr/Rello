@@ -39,13 +39,13 @@
                             <a href="{{ route('index.main')}}" class="nav-link">About Us</a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('index.main')}}" class="nav-link">For Rent</a>
+                            <a href="{{ route('listing_rent')}}" class="nav-link">For Rent</a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('index.main')}}" class="nav-link">For Sale</a>
+                            <a href="{{ route('listing_sale')}}" class="nav-link">For Sale</a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('index.main')}}" class="nav-link">Contact</a>
+                            <a href="{{ route('contact')}}" class="nav-link">Contact</a>
                         </li>
                     </ul>
 

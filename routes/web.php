@@ -4,10 +4,11 @@ use App\Http\Controllers as Con;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
+use App\Http\Controllers\RentController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\PropertyController;
-use App\Http\Controllers\RentController;
+use App\Http\Controllers\ContactDataController;
 
 
 
@@ -22,10 +23,7 @@ use App\Http\Controllers\RentController;
 |
 */
 
-Route::get('/', function () {
-    return view('auth.login');
-});
-
+Route::get('/', [Con\FrontendController::class, 'index'])->name('index.main');
 
 Route::get('/clear', function () {
     Artisan::call('cache:clear');
@@ -80,6 +78,13 @@ Route::group(['namespace' => 'App\Http\Controllers', 'middleware' => ['auth', 'p
  Route::resource('rents', RentController::class);
 
 
+  // Contact Data Routes
+    Route::get('/contactdata/edit', [ContactDataController::class, 'edit'])->name('contactdata.edit');
+    Route::get('/contactdata/create', [ContactDataController::class, 'create'])->name('contactdata.create');
+    Route::post('/contactdata/store', [ContactDataController::class, 'store'])->name('contactdata.store');
+    Route::post('/contactdata/update', [ContactDataController::class, 'update'])->name('contactdata.update');
+
+
 
 
 
@@ -88,6 +93,16 @@ Route::group(['namespace' => 'App\Http\Controllers', 'middleware' => ['auth', 'p
 
 
 
-Route::view('/index', 'frontend.partials.main')->name('index.main');
 
-Route::get('/index', [Con\FrontendController::class, 'index'])->name('index.main');
+
+
+
+
+
+Route::get('/listing-rent', [Con\FrontendController::class, 'listing_rent'])->name('listing_rent');
+Route::get('/listing-sale', [Con\FrontendController::class, 'listing_sale'])->name('listing_sale');
+
+Route::get('/single-listing_sale/{id}', [Con\FrontendController::class, 'single_listing_sale'])->name('single_listing_sale');
+Route::get('/single-listing_rent/{id}', [Con\FrontendController::class, 'single_listing_rent'])->name('single_listing_rent');
+
+Route::get('/contact', [Con\FrontendController::class, 'contact'])->name('contact');

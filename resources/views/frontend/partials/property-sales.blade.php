@@ -28,7 +28,7 @@
                 <div class="col-xl-3 col-md-6 mix for-sale">
                     <div class="single-properties-item style-three wow animate__animated animate__fadeInUp delay-0-2s">
                         <div class="properties-img">
-                            <a href="single-listing.html">
+                            <a href="{{ route('single_listing_sale', $property->id) }}">
                                 <img src="{{ asset('storage/' . $property->agent_image) }}" alt="Image">
                             </a>
                             <span>Sale</span>
@@ -36,7 +36,7 @@
                         <div class="properties-content">
                             <div class="border-style">
                                 <div class="d-flex justify-content-between">
-                                    <a href="single-listing.html">
+                                    <a href="{{ route('single_listing_sale', $property->id) }}">
                                         <h3>{{ $property->title }}</h3>
                                     </a>
                                     <h3 class="price">$ {{ $property->price }}</h3>
@@ -65,7 +65,7 @@
                                 <li>
                                     <div class="agent-user">
                                         <img src="{{ asset('frontend/assets/images/agents/agent-1.jpg') }}" alt="Image">
-                                        <span>By {{ Auth::user()->name }}</span>
+                                        <span>By {{ $property->user->name }}</span>
                                     </div>
                                 </li>
                                 <li>
@@ -78,7 +78,7 @@
                 @endforeach
 
                 <div class="col-lg-12 text-center">
-                    <a href="listing.html" class="default-btn btn-radius">
+                    <a href="{{route('listing_sale')}}" class="default-btn btn-radius">
                         View All Listing
                     </a>
                 </div>
