@@ -119,4 +119,13 @@ Route::get('/single-listing_rent/{id}', [Con\FrontendController::class, 'single_
 Route::get('/contact', [Con\FrontendController::class, 'contact'])->name('contact');
 
 Route::get('/about', [Con\FrontendController::class, 'about'])->name('about');
+Route::get('/user/login', [Con\FrontendController::class, 'login'])->name('user.login');
+Route::post('/user/login-submit', [Con\FrontendController::class, 'login_req'])->name('user.login.submit');
+Route::post('/user/registration-submit', [Con\FrontendController::class, 'registration_req'])->name('user.registration.submit');
+
+Route::group(['namespace' => 'App\Http\Controllers', 'middleware' => ['auth']], function () {
+Route::get('/user/dashboard', [Con\FrontendController::class, 'user_dashboard'])->name('user.dashboard');
+
+});
+
 

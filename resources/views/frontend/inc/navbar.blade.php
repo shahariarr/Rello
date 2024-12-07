@@ -43,15 +43,67 @@
 
                     <div class="others-options style">
                         <ul>
-
+                            @auth
                             <li>
-                                <a href="{{ route('index.main')}}" class="login">
+                                <div class="dropdown">
+                                    <button type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false" class="">
+                                        <img src="{{ asset('frontend/assets/images/agents/agent-1.jpg')}}" alt="Image">
+                                        <span>{{ Auth::user()->name}}</span>
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <li>
+                                            <a href="dashboard.html">
+                                                <i class="ri-dashboard-line"></i>
+                                                Dashboard
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="my-profile.html">
+                                                <i class="ri-user-line"></i>
+                                                My Profile
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="edit-profile.html">
+                                                <i class="ri-image-edit-line"></i>
+                                                Edit Profile
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="add-listing.html">
+                                                <i class="ri-list-check"></i>
+                                                Add Listing
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="edit-profile.html">
+                                                <i class="ri-settings-2-line"></i>
+                                                Setting
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <form action="{{ route('logout')}}" method="post">
+                                                @csrf
+                                            <button type="submit">
+                                                <i class="ri-logout-box-r-line"></i>
+                                                Sign out
+                                            </button>
+                                        </form>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                         @endauth
+                            @guest
+                            <li>
+                                <a href="{{ route('user.login')}}" class="login">
                                     <i class="ri-user-line"></i>
                                     <span>Log In or Sign Up</span>
                                 </a>
                             </li>
+                            @endguest
                             <li>
-                                <a href="{{ route('index.main')}}" class="default-btn btn-radius">
+                                <a href="{{ route('user.login')}}" class="default-btn btn-radius">
                                     Add Listing
                                 </a>
                             </li>
