@@ -78,6 +78,12 @@ class ContactDataController extends Controller
             $contactData->instagram = $request->instagram;
             $contactData->youtube = $request->youtube;
 
+            if ($request->hasFile('logo')) {
+                $logoImageName = time().'_logo.'.$request->logo->extension();
+                $request->logo->move(public_path('images'), $logoImageName);
+                $contactData->logo = $logoImageName;
+            }
+
             $contactData->save();
 
             return redirect()->route('contactdata.edit')->with('success', 'Contact data created successfully.');
@@ -120,6 +126,12 @@ class ContactDataController extends Controller
             $contactData->twitter = $request->twitter;
             $contactData->instagram = $request->instagram;
             $contactData->youtube = $request->youtube;
+
+            if ($request->hasFile('logo')) {
+                $logoImageName = time().'_logo.'.$request->logo->extension();
+                $request->logo->move(public_path('images'), $logoImageName);
+                $contactData->logo = $logoImageName;
+            }
 
             $contactData->save();
 

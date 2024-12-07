@@ -1,3 +1,6 @@
+@php
+      $contactData = \App\Models\ContactData::first();
+@endphp
 <!-- Start Navbar Area -->
 <div class="navbar-area">
     <div class="mobile-responsive-nav">
@@ -5,9 +8,7 @@
             <div class="mobile-responsive-menu">
                 <div class="logo">
                     <a href="{{ route('index.main')}}">
-                        <img src="{{ asset('frontend/assets/images/logo.png') }}" class="main-logo" alt="logo">
-                        <img src="{{ asset('frontend/assets/images/white-logo.png') }}" class="white-logo" alt="logo">
-                    </a>
+                        <img src="{{ asset('images/' . $contactData->logo) }}" class="main-logo" alt="logo"></a>
                 </div>
             </div>
         </div>
@@ -22,21 +23,12 @@
                 </a>
 
                 <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
-                    <div class="others-options">
-                        <form class="search-form">
-                            <input type="text" class="form-control" placeholder="Search...">
-                            <button type="submit" class="src-btn">
-                                <i class="fa-solid fa-magnifying-glass"></i>
-                            </button>
-                        </form>
-                    </div>
-
                     <ul class="navbar-nav m-auto">
                         <li class="nav-item">
                             <a href="{{ route('index.main')}}" class="nav-link active">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('index.main')}}" class="nav-link">About Us</a>
+                            <a href="{{ route('about')}}" class="nav-link">About Us</a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('listing_rent')}}" class="nav-link">For Rent</a>

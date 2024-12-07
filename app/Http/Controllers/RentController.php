@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use DataTables;
 use App\Models\Rent;
 use Illuminate\Http\Request;
-use DataTables;
 use Illuminate\Support\Facades\Auth;
 
 class RentController extends Controller
@@ -51,27 +51,31 @@ class RentController extends Controller
             'agent_phone' => 'required',
             'description' => 'required',
             'agent_image' => 'image|nullable',
+            'background_image' => 'image|nullable',
         ]);
 
-        $rent = new Rent($request->all());
-        $rent->user_id = Auth::id();
+        $data = $request->all();
+        $data['user_id'] = Auth::id();
 
         if ($request->hasFile('agent_image')) {
-            $rent->agent_image = $request->file('agent_image')->store('agent_images', 'public');
+            $data['agent_image'] = $request->file('agent_image')->store('uploads', 'public');
         }
 
-        $rent->save();
+        if ($request->hasFile('background_image')) {
+            $data['background_image'] = $request->file('background_image')->store('uploads', 'public');
+        }
+
+        Rent::create($data);
 
         return redirect()->route('rents.index')->with('success', 'Rent created successfully.');
     }
 
-    public function edit($id)
+    public function edit(Rent $rent)
     {
-        $rent = Rent::where('user_id', Auth::id())->findOrFail($id);
         return view('rents.edit', compact('rent'));
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, Rent $rent)
     {
         $request->validate([
             'title' => 'required',
@@ -83,23 +87,26 @@ class RentController extends Controller
             'agent_phone' => 'required',
             'description' => 'required',
             'agent_image' => 'image|nullable',
+            'background_image' => 'image|nullable',
         ]);
 
-        $rent = Rent::where('user_id', Auth::id())->findOrFail($id);
-        $rent->fill($request->all());
+        $data = $request->all();
 
         if ($request->hasFile('agent_image')) {
-            $rent->agent_image = $request->file('agent_image')->store('agent_images', 'public');
+            $data['agent_image'] = $request->file('agent_image')->store('uploads', 'public');
         }
 
-        $rent->save();
+        if ($request->hasFile('background_image')) {
+            $data['background_image'] = $request->file('background_image')->store('uploads', 'public');
+        }
+
+        $rent->update($data);
 
         return redirect()->route('rents.index')->with('success', 'Rent updated successfully.');
     }
 
-    public function destroy($id)
+    public function destroy(Rent $rent)
     {
-        $rent = Rent::where('user_id', Auth::id())->findOrFail($id);
         $rent->delete();
 
         return redirect()->route('rents.index')->with('success', 'Rent deleted successfully.');

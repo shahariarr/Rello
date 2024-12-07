@@ -323,27 +323,4 @@
     </div>
 </div>
 <!-- End Listing Area -->
-
-<!-- Start App Area -->
-<div class="app-area bg-1 ptb-100">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-7">
-                <div class="app-content wow animate__animated animate__fadeInLeft delay-0-2s">
-                    <h2>Download today and get your free copy from Apple and Play Store</h2>
-                </div>
-            </div>
-            <div class="col-lg-5">
-                <div class="app-btn wow animate__animated animate__fadeInRight delay-0-2s">
-                    <a href="https://play.google.com/store/apps" target="_blank">
-                        <img src="assets/images/play-store.png" alt="Image">
-                    </a>
-                    <a href="https://play.google.com/store/apps" target="_blank">
-                        <img src="assets/images/apple-store.png" alt="Image">
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 @endsection

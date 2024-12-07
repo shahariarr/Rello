@@ -1,6 +1,7 @@
 @extends('layouts.back')
 @section('title') Edit Rent @endsection
 @push('styles')
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote-bs4.min.css" rel="stylesheet">
 @endpush
 @section('content')
 <section class="section">
@@ -88,11 +89,9 @@
                                 <div class="col-md-6">
                                     <label for="agent_image" class="col-form-label">Thumbnail image</label>
                                     <input type="file" class="form-control @error('agent_image') is-invalid @enderror" id="agent_image" name="agent_image">
+                                    <img src="{{ asset('storage/' . $rent->agent_image) }}" alt="Agent Image" class="img-thumbnail mt-2" width="150">
                                     @if ($errors->has('agent_image'))
                                         <span class="text-danger">{{ $errors->first('agent_image') }}</span>
-                                    @endif
-                                    @if ($rent->agent_image)
-                                        <img src="{{ asset('storage/' . $rent->agent_image) }}" alt="Agent Image" height="50">
                                     @endif
                                 </div>
                             </div>
@@ -101,11 +100,9 @@
                                 <div class="col-md-6">
                                     <label for="background_image" class="col-form-label">Background Image</label>
                                     <input type="file" class="form-control @error('background_image') is-invalid @enderror" id="background_image" name="background_image">
+                                    <img src="{{ asset('storage/' . $rent->background_image) }}" alt="Background Image" class="img-thumbnail mt-2" width="150">
                                     @if ($errors->has('background_image'))
                                         <span class="text-danger">{{ $errors->first('background_image') }}</span>
-                                    @endif
-                                    @if ($rent->background_image)
-                                        <img src="{{ asset('storage/' . $rent->background_image) }}" alt="Background Image" height="50">
                                     @endif
                                 </div>
                                 <div class="col-md-6">
@@ -130,9 +127,13 @@
 </section>
 @endsection
 @push('scripts')
-<script>
-    $(document).ready(function() {
-        $('.select2').select2();
-    });
-</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote-bs4.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#description').summernote({
+                height: 200,
+                dialogsInBody: true
+            });
+        });
+    </script>
 @endpush

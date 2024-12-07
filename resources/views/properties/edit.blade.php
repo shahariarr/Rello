@@ -1,6 +1,7 @@
 @extends('layouts.back')
 @section('title') Edit Property @endsection
 @push('styles')
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote-bs4.min.css" rel="stylesheet">
 @endpush
 @section('content')
 <section class="section">
@@ -126,9 +127,14 @@
 </section>
 @endsection
 @push('scripts')
-<script>
-    $(document).ready(function() {
-        $('.select2').select2();
-    });
-</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote-bs4.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#description').summernote({
+                height: 200,
+                dialogsInBody: true
+
+            });
+        });
+    </script>
 @endpush

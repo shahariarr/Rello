@@ -140,6 +140,18 @@
                             </div>
 
                             <div class="row mb-3">
+                                <div class="col-md-6">
+                                <label for="logo" class="col-md-4 col-form-label text-md-end">Logo</label>
+                                    <input id="logo" type="file" class="form-control @error('logo') is-invalid @enderror" name="logo">
+                                    @error('logo')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
                                 <div class="col-md-12">
                                     <button type="submit" class="btn btn-primary">Save</button>
                                 </div>

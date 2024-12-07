@@ -111,35 +111,35 @@
                                 @if($contactData->facebook)
                                 <li>
                                     <a href="{{ $contactData->facebook }}" target="_blank">
-                                        <i class="ri-facebook-fill"></i>
+                                        <i class="fa-brands fa-facebook-f"></i>
                                     </a>
                                 </li>
                                 @endif
                                 @if($contactData->twitter)
                                 <li>
                                     <a href="{{ $contactData->twitter }}" target="_blank">
-                                        <i class="ri-twitter-line"></i>
+                                        <i class="fa-brands fa-twitter"></i>
                                     </a>
                                 </li>
                                 @endif
                                 @if($contactData->instagram)
                                 <li>
                                     <a href="{{ $contactData->instagram }}" target="_blank">
-                                        <i class="ri-instagram-line"></i>
+                                        <i class="fa-brands fa-instagram"></i>
                                     </a>
                                 </li>
                                 @endif
                                 @if($contactData->linkedin)
                                 <li>
                                     <a href="{{ $contactData->linkedin }}" target="_blank">
-                                        <i class="ri-linkedin-fill"></i>
+                                        <i class="fa-brands fa-linkedin"></i>
                                     </a>
                                 </li>
                                 @endif
                                 @if($contactData->youtube)
                                 <li>
                                     <a href="{{ $contactData->youtube }}" target="_blank">
-                                        <i class="ri-youtube-fill"></i>
+                                        <i class="fa-brands fa-youtube"></i>
                                     </a>
                                 </li>
                                 @endif

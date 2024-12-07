@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\RentController;
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\PropertyController;
@@ -82,7 +83,17 @@ Route::group(['namespace' => 'App\Http\Controllers', 'middleware' => ['auth', 'p
     Route::get('/contactdata/edit', [ContactDataController::class, 'edit'])->name('contactdata.edit');
     Route::get('/contactdata/create', [ContactDataController::class, 'create'])->name('contactdata.create');
     Route::post('/contactdata/store', [ContactDataController::class, 'store'])->name('contactdata.store');
-    Route::post('/contactdata/update', [ContactDataController::class, 'update'])->name('contactdata.update');
+    Route::put('/contactdata/update', [ContactDataController::class, 'update'])->name('contactdata.update');
+
+
+
+
+Route::get('about/create', [AboutController::class, 'create'])->name('about.create');
+Route::post('about/store', [AboutController::class, 'store'])->name('about.store');
+Route::get('about/edit', [AboutController::class, 'edit'])->name('about.edit');
+Route::put('about/update', [AboutController::class, 'update'])->name('about.update');
+
+
 
 
 
@@ -106,3 +117,6 @@ Route::get('/single-listing_sale/{id}', [Con\FrontendController::class, 'single_
 Route::get('/single-listing_rent/{id}', [Con\FrontendController::class, 'single_listing_rent'])->name('single_listing_rent');
 
 Route::get('/contact', [Con\FrontendController::class, 'contact'])->name('contact');
+
+Route::get('/about', [Con\FrontendController::class, 'about'])->name('about');
+

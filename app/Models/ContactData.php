@@ -21,7 +21,8 @@ class ContactData extends Model
         'map',
         'twitter',
         'instagram',
-        'youtube'
+        'youtube',
+        'logo'
     ];
     public function user()
     {

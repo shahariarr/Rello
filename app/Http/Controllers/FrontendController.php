@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Rent;
+use App\Models\About;
 use App\Models\Banner;
 use App\Models\Service;
 use App\Models\Property;
@@ -56,9 +57,19 @@ class FrontendController extends Controller
 
     public function contact()
     {
-        $contactData = ContactData::where('user_id', auth()->id())->first();
+        $contactData = ContactData::first();
         return view('frontend.partials.contact', compact('contactData'));
     }
+
+    public function about()
+    {
+        $about = About::first();
+        $services = Service::all();
+
+        return view('frontend.partials.about', compact('about', 'services'));
+    }
+
+
 
 
 

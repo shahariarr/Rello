@@ -78,7 +78,7 @@
                 <div class="properties-details-content">
                     <div class="properties-about">
                         <h3>Property Description</h3>
-                        <p>{{ $property->description }}</p>
+                        <p>{!!$property->description !!}</p>
                     </div>
 
                     <div class="gap-mb-50"></div>
