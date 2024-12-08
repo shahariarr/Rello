@@ -16,6 +16,8 @@
 		<link rel="stylesheet" href="{{ asset('frontend/assets/css/magnific-popup.min.css') }}">
 		<link rel="stylesheet" href="{{ asset('frontend/assets/css/dark-mode.css') }}">
 		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote-bs4.min.css" rel="stylesheet">
+
 
 		<link rel="stylesheet" href="{{ asset('frontend/assets/css/style.css') }}">
 		<link rel="stylesheet" href="{{ asset('frontend/assets/css/responsive.css') }}">
@@ -56,5 +58,9 @@
 		<script src="{{ asset('frontend/assets/js/contact-form-script.js') }}"></script>
 		<script src="{{ asset('frontend/assets/js/ajaxchimp.min.js') }}"></script>
 		<script src="{{ asset('frontend/assets/js/custom.js') }}"></script>
+        {{-- <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script> --}}
+
+        @stack('scripts')
+
 </body>
 </html>

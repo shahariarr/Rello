@@ -2,46 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use DataTables;
 use App\Models\Rent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class RentController extends Controller
+class UserRentController extends Controller
 {
-
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
     public function index(Request $request)
     {
-        if ($request->ajax()) {
-            $data = Rent::where('user_id', Auth::id())->get();
-
-            return DataTables::of($data)
-                ->addIndexColumn()
-                ->addColumn('action', function($row){
-                    $btn = '<div class="d-flex">';
-                    $btn .= '<a href="'.route("rents.edit",$row['id']).'" class="btn btn-primary btn-sm mr-2"><i class="bi bi-pencil-square"></i> Edit</a>';
-                    $btn .= '<form action="'.route("rents.destroy",$row['id']).'" method="POST">
-                    <input type="hidden" name="_token" value="'.csrf_token().'">
-                    <input type="hidden" name="_method" value="DELETE">
-                    <button type="submit" class="btn btn-danger btn-sm mr-2"><i class="bi bi-trash"></i> Delete</button>
-                    </form>';
-                    $btn .= '</div>';
-                    return $btn;
-                })
-                ->rawColumns(['action'])
-                ->make(true);
-        }
-
-        return view('rents.index');
+        $properties = Rent::where('user_id', Auth::id())->get();
+        return view('frontend.partials.user_rent_index', compact('properties'));
     }
 
     public function create()
     {
-        return view('rents.create');
+        return view('frontend.partials.user_rent_create');
     }
 
     public function store(Request $request)
@@ -72,12 +47,12 @@ class RentController extends Controller
 
         Rent::create($data);
 
-        return redirect()->route('rents.index')->with('success', 'Rent created successfully.');
+        return redirect()->route('user.rents.index')->with('success', 'Rent created successfully.');
     }
 
     public function edit(Rent $rent)
     {
-        return view('rents.edit', compact('rent'));
+        return view('frontend.partials.user_rent_edit', compact('rent'));
     }
 
     public function update(Request $request, Rent $rent)
@@ -107,13 +82,13 @@ class RentController extends Controller
 
         $rent->update($data);
 
-        return redirect()->route('rents.index')->with('success', 'Rent updated successfully.');
+        return redirect()->route('user.rents.index')->with('success', 'Rent updated successfully.');
     }
 
     public function destroy(Rent $rent)
     {
         $rent->delete();
 
-        return redirect()->route('rents.index')->with('success', 'Rent deleted successfully.');
+        return redirect()->route('user.rents.index')->with('success', 'Rent deleted successfully.');
     }
 }

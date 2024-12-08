@@ -9,7 +9,9 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\PropertyController;
+use App\Http\Controllers\UserRentController;
 use App\Http\Controllers\ContactDataController;
+use App\Http\Controllers\UserPropertyController;
 
 
 
@@ -79,6 +81,8 @@ Route::group(['namespace' => 'App\Http\Controllers', 'middleware' => ['auth', 'p
  Route::resource('rents', RentController::class);
 
 
+
+
   // Contact Data Routes
     Route::get('/contactdata/edit', [ContactDataController::class, 'edit'])->name('contactdata.edit');
     Route::get('/contactdata/create', [ContactDataController::class, 'create'])->name('contactdata.create');
@@ -125,10 +129,18 @@ Route::post('/user/registration-submit', [Con\FrontendController::class, 'regist
 
 
 
-Route::group(['namespace' => 'App\Http\Controllers', 'middleware' => ['auth']], function () {
-Route::get('/user/dashboard', [Con\FrontendController::class, 'user_dashboard'])->name('user.dashboard');
-// Route::get('/user/logout', [Con\FrontendController::class, 'logout'])->name('user.logout');
-Route::view('/user/profile', 'frontend.partials.user_profile')->name('user.profile');
+Route::group(['as' => 'user.', 'prefix' => 'user','namespace' => 'App\Http\Controllers', 'middleware' => ['auth']], function () {
+Route::get('/dashboard', [Con\FrontendController::class, 'user_dashboard'])->name('dashboard');
+Route::view('/profile', 'frontend.partials.user_profile')->name('profile');
+Route::view('/profile/edit', 'frontend.partials.user_profile_edit')->name('profile.edit');
+Route::view('/add-property', 'frontend.partials.user_add-listing_property')->name('add.property');
+Route::view('/add-rent', 'frontend.partials.user_add-listing_rent')->name('add.rent');
+Route::view('/my-properties', 'frontend.partials.user_my-listings_property')->name('my.properties');
+Route::resource('/properties', UserPropertyController::class);
+
+Route::resource('/rents', UserRentController::class);
+
+
 
 });
 

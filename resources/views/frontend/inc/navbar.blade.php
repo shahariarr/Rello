@@ -25,19 +25,19 @@
                 <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
                     <ul class="navbar-nav m-auto">
                         <li class="nav-item">
-                            <a href="{{ route('index.main')}}" class="nav-link active">Home</a>
+                            <a href="{{ route('index.main')}}" class="{{ Request::routeIs('index.main') ? 'active':''}}">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('about')}}" class="nav-link">About Us</a>
+                            <a href="{{ route('about')}}" class="{{ Request::routeIs('about') ? 'active':''}}">About Us</a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('listing_rent')}}" class="nav-link">For Rent</a>
+                            <a href="{{ route('listing_rent')}}" class="{{ Request::routeIs('listing_rent') ? 'active':''}}">For Rent</a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('listing_sale')}}" class="nav-link">For Sale</a>
+                            <a href="{{ route('listing_sale')}}" class="{{ Request::routeIs('listing_sale') ? 'active':''}}">For Sale</a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('contact')}}" class="nav-link">Contact</a>
+                            <a href="{{ route('contact')}}" class="{{ Request::routeIs('contact') ? 'active':''}}">Contact</a>
                         </li>
                     </ul>
 
@@ -64,15 +64,22 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="edit-profile.html">
+                                            <a href="{{route("user.profile.edit")}}">
                                                 <i class="ri-image-edit-line"></i>
                                                 Edit Profile
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="add-listing.html">
+                                            <a href="{{route('user.properties.index')}}">
                                                 <i class="ri-list-check"></i>
-                                                Add Listing
+                                                Add Property Listing
+                                            </a>
+                                        </li>
+
+                                        <li>
+                                            <a href="{{route('user.rents.index')}}">
+                                                <i class="ri-list-check"></i>
+                                                Add Rent Listing
                                             </a>
                                         </li>
                                         <li>
@@ -102,14 +109,14 @@
                                 </a>
                             </li>
                             @endguest
-                            @guest
+                            {{-- @guest
                             <li>
                                 <a href="{{ route('user.login')}}" class="login">
                                     <i class="ri-user-line"></i>
                                     <span>Log In or Sign Up</span>
                                 </a>
                             </li>
-                            @endguest
+                            @endguest --}}
                             <li>
                                 @auth
                                 <a href="{{ route('user.dashboard')}}" class="default-btn btn-radius">
