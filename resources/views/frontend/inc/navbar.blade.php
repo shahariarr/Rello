@@ -52,13 +52,13 @@
                                     </button>
                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                         <li>
-                                            <a href="dashboard.html">
+                                            <a href="{{route('user.dashboard')}}">
                                                 <i class="ri-dashboard-line"></i>
                                                 Dashboard
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="my-profile.html">
+                                            <a href="{{route('user.profile')}}">
                                                 <i class="ri-user-line"></i>
                                                 My Profile
                                             </a>
@@ -102,11 +102,25 @@
                                 </a>
                             </li>
                             @endguest
+                            @guest
                             <li>
+                                <a href="{{ route('user.login')}}" class="login">
+                                    <i class="ri-user-line"></i>
+                                    <span>Log In or Sign Up</span>
+                                </a>
+                            </li>
+                            @endguest
+                            <li>
+                                @auth
+                                <a href="{{ route('user.dashboard')}}" class="default-btn btn-radius">
+                                    Add Listing
+                                </a>
+                                @endauth
+                                @guest
                                 <a href="{{ route('user.login')}}" class="default-btn btn-radius">
                                     Add Listing
                                 </a>
-                            </li>
+                                @endguest
                         </ul>
                     </div>
                 </div>
@@ -160,4 +174,8 @@
     </div>
 </div>
 <!-- End Navbar Area -->
+
+
+
+
 

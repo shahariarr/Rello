@@ -123,8 +123,12 @@ Route::get('/user/login', [Con\FrontendController::class, 'login'])->name('user.
 Route::post('/user/login-submit', [Con\FrontendController::class, 'login_req'])->name('user.login.submit');
 Route::post('/user/registration-submit', [Con\FrontendController::class, 'registration_req'])->name('user.registration.submit');
 
+
+
 Route::group(['namespace' => 'App\Http\Controllers', 'middleware' => ['auth']], function () {
 Route::get('/user/dashboard', [Con\FrontendController::class, 'user_dashboard'])->name('user.dashboard');
+// Route::get('/user/logout', [Con\FrontendController::class, 'logout'])->name('user.logout');
+Route::view('/user/profile', 'frontend.partials.user_profile')->name('user.profile');
 
 });
 

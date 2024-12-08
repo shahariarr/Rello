@@ -162,5 +162,6 @@
     </div>
 </div>
 <!-- End Map Area -->
+@include('frontend.inc.footer')
 
 @endsection

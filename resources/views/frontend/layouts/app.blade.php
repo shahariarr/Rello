@@ -40,7 +40,8 @@
 
     @yield('content')
 
-    @include('frontend.inc.footer')
+
+
 
         <!-- Links of JS File -->
         <script data-cfasync="false" src="{{ asset('frontend//cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js') }}"></script><script src="{{ asset('frontend/assets/js/jquery.min.js') }}"></script>

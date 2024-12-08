@@ -162,4 +162,6 @@
     </div>
 </div>
 <!-- End Single Listing Area -->
+@include('frontend.inc.footer')
+
 @endsection

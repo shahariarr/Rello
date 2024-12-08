@@ -93,4 +93,6 @@
     </div>
 </div>
 <!-- End About Rello Area -->
+@include('frontend.inc.footer')
+
 @endsection

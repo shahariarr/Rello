@@ -100,5 +100,7 @@
         </div>
     </div>
 </section>
+@include('frontend.inc.footer')
+
 <!-- End User Area -->
 @endsection

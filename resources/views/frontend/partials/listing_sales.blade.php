@@ -321,5 +321,6 @@
     </div>
 </div>
 <!-- End Listing Area -->
+@include('frontend.inc.footer')
 
 @endsection
