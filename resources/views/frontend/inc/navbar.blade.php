@@ -57,7 +57,7 @@
                                                 Dashboard
                                             </a>
                                         </li>
-                                        <li>
+                                        {{-- <li>
                                             <a href="{{route('user.profile')}}">
                                                 <i class="ri-user-line"></i>
                                                 My Profile
@@ -68,7 +68,7 @@
                                                 <i class="ri-image-edit-line"></i>
                                                 Edit Profile
                                             </a>
-                                        </li>
+                                        </li> --}}
                                         <li>
                                             <a href="{{route('user.properties.index')}}">
                                                 <i class="ri-list-check"></i>

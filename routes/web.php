@@ -11,6 +11,7 @@ use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\UserRentController;
 use App\Http\Controllers\ContactDataController;
+use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\UserPropertyController;
 
 
@@ -99,6 +100,12 @@ Route::put('about/update', [AboutController::class, 'update'])->name('about.upda
 
 
 
+Route::get('user_profiles/edit', [UserProfileController::class, 'edit'])->name('user_profiles.edit');
+Route::get('user_profiles/create', [UserProfileController::class, 'create'])->name('user_profiles.create');
+Route::post('user_profiles/store', [UserProfileController::class, 'store'])->name('user_profiles.store');
+Route::post('user_profiles/update', [UserProfileController::class, 'update'])->name('user_profiles.update');
+
+
 
 
 
@@ -131,11 +138,14 @@ Route::post('/user/registration-submit', [Con\FrontendController::class, 'regist
 
 Route::group(['as' => 'user.', 'prefix' => 'user','namespace' => 'App\Http\Controllers', 'middleware' => ['auth']], function () {
 Route::get('/dashboard', [Con\FrontendController::class, 'user_dashboard'])->name('dashboard');
-Route::view('/profile', 'frontend.partials.user_profile')->name('profile');
-Route::view('/profile/edit', 'frontend.partials.user_profile_edit')->name('profile.edit');
-Route::view('/add-property', 'frontend.partials.user_add-listing_property')->name('add.property');
-Route::view('/add-rent', 'frontend.partials.user_add-listing_rent')->name('add.rent');
-Route::view('/my-properties', 'frontend.partials.user_my-listings_property')->name('my.properties');
+// Route::view('/profile', 'frontend.partials.user_profile')->name('profile');
+// Route::view('/profile/edit', 'frontend.partials.user_profile_edit')->name('profile.edit');
+
+// Route::view('/add-property', 'frontend.partials.user_add-listing_property')->name('add.property');
+// Route::view('/add-rent', 'frontend.partials.user_add-listing_rent')->name('add.rent');
+// Route::view('/my-properties', 'frontend.partials.user_my-listings_property')->name('my.properties');
+
+
 Route::resource('/properties', UserPropertyController::class);
 
 Route::resource('/rents', UserRentController::class);

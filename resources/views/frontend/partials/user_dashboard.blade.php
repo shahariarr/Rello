@@ -19,14 +19,14 @@
                     </ul>
                 </div>
                 <div class="col-lg-6 col-sm-6">
-                    <form class="dashboard-src-form">
+                    {{-- <form class="dashboard-src-form">
                         <div class="form-group">
                             <input type="text" class="form-control" placeholder="Search">
                             <button type="submit" class="src-btn">
                                 <i class="ri-search-line"></i>
                             </button>
                         </div>
-                    </form>
+                    </form> --}}
                 </div>
             </div>
         </div>

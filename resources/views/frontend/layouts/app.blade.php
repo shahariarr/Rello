@@ -10,7 +10,9 @@
 		<link rel="stylesheet" href="{{ asset('frontend/assets/css/owl.theme.default.min.css') }}">
 		<link rel="stylesheet" href="{{ asset('frontend/assets/css/owl.carousel.min.css') }}">
 		<link rel="stylesheet" href="{{ asset('frontend/assets/css/flaticon.css') }}">
-		<link rel="stylesheet" href="{{ asset('frontend/assets/css/remixicon.css') }}">
+		{{-- <link rel="stylesheet" href="{{ asset('frontend/assets/css/remixicon.css') }}"> --}}
+        <link  href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"  rel="stylesheet"
+/>
 		<link rel="stylesheet" href="{{ asset('frontend/assets/css/meanmenu.min.css') }}">
 		<link rel="stylesheet" href="{{ asset('frontend/assets/css/animate.min.css') }}">
 		<link rel="stylesheet" href="{{ asset('frontend/assets/css/magnific-popup.min.css') }}">

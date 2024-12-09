@@ -9,7 +9,7 @@
                 Dashboard
             </a>
         </li>
-        <li>
+        {{-- <li>
             <a href="{{route('user.profile')}}" class="{{ Request::routeIs('user.profile') ? 'active':''}}">
                 <i class="fa-solid fa-user"></i>
                 My Profile
@@ -20,7 +20,7 @@
                 <i class="fa-solid fa-pen-to-square"></i>
                 Edit Profile
             </a>
-        </li>
+        </li> --}}
         <li>
             <a href="{{route('user.properties.create')}}" class="{{ Request::routeIs('user.properties.create') ? 'active':''}}">
                 <i class="fa-regular fa-chart-bar"></i>
